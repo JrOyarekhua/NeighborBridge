@@ -19,7 +19,7 @@ export function SectionHeading({
       <Eyebrow>{kicker}</Eyebrow>
       <h2
         id={id}
-        className="my-2 text-2xl font-bold tracking-tight text-brand-deep sm:text-3xl"
+        className="display-heading my-2 text-4xl text-brand sm:text-5xl"
       >
         {title}
       </h2>

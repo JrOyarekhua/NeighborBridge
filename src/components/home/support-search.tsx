@@ -16,7 +16,7 @@ export function SupportSearch() {
     >
       <Form
         action="/resources"
-        className="rounded-2xl border border-brand/12 bg-surface px-5 py-6 shadow-panel sm:rounded-3xl sm:p-11"
+        className="rounded-card border border-line bg-surface px-5 py-6 shadow-panel sm:p-11"
       >
         <SectionHeading
           id="support-search-title"
@@ -44,7 +44,7 @@ export function SupportSearch() {
               placeholder="e.g. 30303"
             />
           </div>
-          <Button type="submit" className="h-12 w-full sm:w-auto sm:min-w-45">
+          <Button type="submit" className="w-full sm:w-auto sm:min-w-45">
             <Search /> Find Resources
           </Button>
         </div>

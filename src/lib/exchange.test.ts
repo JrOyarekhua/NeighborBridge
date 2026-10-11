@@ -11,16 +11,16 @@ describe("filterListings", () => {
   });
 
   it("filters by type", () => {
-    const ids = filterListings(exchangeListings, { type: "Need", q: "" }).map((l) => l.id);
-    expect(ids).toEqual(["clothing", "volunteer"]);
+    const ids = filterListings(exchangeListings, { type: "Give Back", q: "" }).map((l) => l.id);
+    expect(ids).toEqual(["acfb-give-back", "open-hand-give-back"]);
   });
 
   it("searches title, category and description", () => {
-    const ids = filterListings(exchangeListings, { type: "All", q: "digital" }).map((l) => l.id);
-    expect(ids).toEqual(["computer"]);
+    const ids = filterListings(exchangeListings, { type: "All", q: "hunger" }).map((l) => l.id);
+    expect(ids).toEqual(["acfb-give-back"]);
   });
 
   it("returns nothing when type and search disagree", () => {
-    expect(filterListings(exchangeListings, { type: "Offer", q: "pantry" })).toEqual([]);
+    expect(filterListings(exchangeListings, { type: "Want to Help", q: "pantry" })).toEqual([]);
   });
 });

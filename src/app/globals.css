@@ -11,60 +11,90 @@
    utility AND a CSS variable: --color-food → bg-food, --shadow-button → shadow-button. */
 @theme {
   /* Brand palette */
-  --color-brand: #285e70;
-  --color-brand-deep: #173f4d;
-  --color-mint: #b7e4d2;
-  --color-mint-pale: #e9f7f1;
-  --color-canvas: #f8faf9;
+  --color-brand: #0d4b5e;
+  --color-brand-deep: #0a3a49;
+  --color-mint: #d1f7e7;
+  --color-mint-pale: #e6fafa;
+  --color-canvas: #fff8f2;
   --color-surface: #ffffff;
   --color-ink: #1f2933;
-  --color-ink-soft: #5f6b73;
-  --color-line: #dce6e2;
-  --color-line-strong: #cddbd6;
-  --color-urgent: #9f352d;
-  --color-focus: #f2b84b;
-  --color-footer: #102f39;
-  --color-blush: #f7d9ce;
+  --color-ink-soft: #6b7280;
+  --color-line: #e5e7eb;
+  --color-line-strong: #c9ced6;
+  /* Form field borders: darker than lines so inputs meet 3:1 contrast */
+  --color-field: #9aa3ab;
+  --color-urgent: #9f1d38;
+  --color-focus: #6d28d9;
+  --color-footer: #0b2f3a;
 
-  /* Home hero */
-  --color-hero-from: #f1f8f5;
-  --color-hero-to: #e5f3ef;
-  --color-hero-glow: #d8ece5;
-  --color-step-number: #dce9e4;
+  /* Accents */
+  --color-aqua: #12c4c6;
+  --color-coral: #ff4f6b;
+  --color-coral-strong: #c42e4b;
+  --color-sun: #ffc629;
+  --color-purple: #a855f7;
+  --color-purple-strong: #6d28d9;
+  --color-teal-link: #0b7f86;
+  --color-gold-text: #7a5200;
+  --color-footer-text: #b8c7cc;
+  --color-blush: #ffe1e6;
 
-  /* Category & listing tags (offer matches food today, but can change on its own) */
-  --color-food: #dcf2e9;
-  --color-food-foreground: #235b47;
-  --color-housing: #e3eaf7;
-  --color-housing-foreground: #3b527d;
-  --color-need: #f7dedb;
-  --color-need-foreground: #7d2d27;
-  --color-offer: #dcf2e9;
-  --color-offer-foreground: #235b47;
-  --color-skill: #f8ebc8;
-  --color-skill-foreground: #604c20;
+  /* Category & listing tags */
+  --color-food: #d1f7e7;
+  --color-food-foreground: #0a5c63;
+  --color-housing: #efe3ff;
+  --color-housing-foreground: #6d28d9;
+  --color-emergency: #ffe1e6;
+  --color-emergency-foreground: #9f1d38;
+  --color-need-help: #ffe1e6;
+  --color-need-help-foreground: #9f1d38;
+  --color-want-to-help: #d1f7e7;
+  --color-want-to-help-foreground: #0a5c63;
+  --color-volunteer: #fff0bf;
+  --color-volunteer-foreground: #7a5200;
+  --color-give-back: #efe3ff;
+  --color-give-back-foreground: #5b21b6;
+
+  /* Trust levels */
+  --color-trust-verified: #d1f7e7;
+  --color-trust-verified-foreground: #0a5c63;
+  --color-trust-partner: #e6edff;
+  --color-trust-partner-foreground: #334e8a;
+  --color-trust-recheck: #fff0bf;
+  --color-trust-recheck-foreground: #7a5200;
 
   /* Notices */
-  --color-notice: #fff9ec;
-  --color-notice-border: #f0d9b1;
-  --color-notice-foreground: #694b18;
+  --color-notice: #fff4d6;
+  --color-notice-border: #f0d58a;
+  --color-notice-foreground: #6b4a00;
+
+  /* Schematic map */
+  --color-map: #e8f1e9;
 
   /* Effects */
-  --shadow-button: 0 8px 20px color-mix(in srgb, var(--color-brand) 20%, transparent);
+  --shadow-button: 0 6px 16px color-mix(in srgb, var(--color-brand) 25%, transparent);
   --shadow-logo: 0 6px 18px color-mix(in srgb, var(--color-brand) 18%, transparent);
-  --shadow-art: 0 25px 60px color-mix(in srgb, var(--color-brand) 30%, transparent);
-  --shadow-bubble: 0 10px 28px color-mix(in srgb, var(--color-brand) 20%, transparent);
-  --shadow-float: 0 12px 34px color-mix(in srgb, var(--color-ink) 12%, transparent);
-  --shadow-panel: 0 24px 70px color-mix(in srgb, var(--color-ink) 10%, transparent);
-  --shadow-card: 0 10px 30px color-mix(in srgb, var(--color-ink) 4%, transparent);
-  --shadow-card-hover: 0 12px 28px color-mix(in srgb, var(--color-ink) 8%, transparent);
-  --shadow-raised: 0 12px 40px color-mix(in srgb, var(--color-ink) 7%, transparent);
+  --shadow-art: 0 25px 60px color-mix(in srgb, var(--color-brand) 28%, transparent);
+  --shadow-bubble: 0 10px 28px color-mix(in srgb, var(--color-brand) 18%, transparent);
+  --shadow-float: 0 12px 34px color-mix(in srgb, var(--color-brand) 12%, transparent);
+  --shadow-panel: 0 18px 50px color-mix(in srgb, var(--color-brand) 12%, transparent);
+  --shadow-card: 0 4px 20px color-mix(in srgb, var(--color-brand) 8%, transparent);
+  --shadow-card-hover: 0 10px 28px color-mix(in srgb, var(--color-brand) 13%, transparent);
+  --shadow-raised: 0 4px 20px color-mix(in srgb, var(--color-brand) 8%, transparent);
+  --shadow-modal: 0 30px 90px color-mix(in srgb, var(--color-brand) 30%, transparent);
+
+  /* Card corners (the prototype's 20px) */
+  --radius-card: 1.25rem;
 
   /* Layout: width where the header switches between full nav and the menu button (`nav:`) */
   --breakpoint-nav: 53.125rem;
+  /* Width where the directory shows list and map side by side (`wide:`) */
+  --breakpoint-wide: 68.75rem;
   /* Content widths: max-w-page (header, footer, page content), max-w-narrow (home sections) */
   --container-page: 73.75rem;
   --container-narrow: 67.5rem;
+  /* Directory with the map beside the results */
+  --container-wide: 92.5rem;
 }
 
 /* ─── Role tokens: what each color is FOR ─────────────────────────────────────
@@ -94,8 +124,11 @@
 /* `inline` because these values are variables set at runtime
    (by next/font, or by the :root block above). */
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  /* Uppercase display headings and handwritten accents */
+  --font-display: var(--font-bebas), Impact, sans-serif;
+  --font-marker: var(--font-marker-src), cursive;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -159,6 +192,31 @@
     outline: 3px solid var(--color-focus);
     outline-offset: 3px;
   }
+}
+
+/* Big uppercase headings (hero, page and section titles). */
+@utility display-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+/* Cream backgrounds with soft accent dots (home hero, About). */
+@utility bg-dots-hero {
+  background:
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--color-coral) 18%, transparent) 0 48px, transparent 50px),
+    radial-gradient(circle at 78% 65%, color-mix(in srgb, var(--color-aqua) 20%, transparent) 0 72px, transparent 74px),
+    radial-gradient(circle at 7% 75%, color-mix(in srgb, var(--color-purple) 12%, transparent) 0 62px, transparent 64px),
+    var(--color-canvas);
+}
+
+@utility bg-dots-about {
+  background:
+    radial-gradient(circle at 12% 12%, color-mix(in srgb, var(--color-sun) 22%, transparent) 0 70px, transparent 72px),
+    radial-gradient(circle at 91% 26%, color-mix(in srgb, var(--color-purple) 15%, transparent) 0 90px, transparent 92px),
+    var(--color-canvas);
 }
 
 @media (prefers-reduced-motion: reduce) {

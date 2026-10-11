@@ -8,14 +8,17 @@ export function EmptyState({
   description,
   actionHref,
   actionLabel = "Clear filters",
+  children,
 }: {
   title: string;
   description: string;
   actionHref: string;
   actionLabel?: string;
+  /** Extra actions under the main button. */
+  children?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-dashed border-line-strong bg-surface px-8 py-16 text-center">
+    <div className="rounded-card border border-dashed border-aqua bg-surface px-8 py-16 text-center">
       <span className="mx-auto grid size-16 place-items-center rounded-full bg-mint-pale text-brand">
         <Search className="size-7" aria-hidden="true" />
       </span>
@@ -24,6 +27,7 @@ export function EmptyState({
       <Button asChild>
         <Link href={actionHref}>{actionLabel}</Link>
       </Button>
+      {children && <div>{children}</div>}
     </div>
   );
 }

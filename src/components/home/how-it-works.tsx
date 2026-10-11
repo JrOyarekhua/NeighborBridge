@@ -33,18 +33,18 @@ export function HowItWorks() {
         {STEPS.map(({ icon: Icon, title, text }, index) => (
           <li
             key={title}
-            className="relative rounded-xl border border-line bg-surface p-6 shadow-card sm:p-8"
+            className="relative rounded-card border border-line bg-surface p-6 shadow-card sm:p-8"
           >
             <span
               aria-hidden="true"
-              className="absolute top-5 right-6 text-4xl font-extrabold text-step-number"
+              className="absolute top-5 right-6 text-5xl font-extrabold text-aqua/25"
             >
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span className="grid size-13 place-items-center rounded-lg bg-mint-pale text-brand">
+            <span className="grid size-14 place-items-center rounded-lg bg-mint-pale text-brand">
               <Icon size={25} aria-hidden="true" />
             </span>
-            <h3 className="mt-5 mb-2.5 text-lg font-bold text-brand-deep">{title}</h3>
+            <h3 className="mt-5 mb-2.5 text-[1.375rem] font-semibold text-brand-deep">{title}</h3>
             <p className="text-sm leading-relaxed text-ink-soft">{text}</p>
           </li>
         ))}

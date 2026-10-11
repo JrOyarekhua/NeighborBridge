@@ -35,8 +35,8 @@ export function MainNavView({ pathname }: { pathname: string }) {
               href={href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "border-b-2 py-6 text-sm font-semibold transition-colors hover:border-brand hover:text-brand",
-                active ? "border-brand text-brand" : "border-transparent text-ink-soft",
+                "border-b-2 py-6 text-sm font-semibold transition-colors hover:border-aqua hover:text-brand",
+                active ? "border-aqua text-brand" : "border-transparent text-ink-soft",
               )}
             >
               {label}

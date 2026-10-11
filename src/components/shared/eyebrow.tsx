@@ -13,8 +13,8 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 text-xs font-extrabold tracking-widest uppercase [&_svg]:size-4",
-        tone === "light" ? "text-mint" : "text-brand",
+        "inline-flex items-center gap-2 text-[0.8125rem] font-extrabold tracking-[0.12em] uppercase [&_svg]:size-4",
+        tone === "light" ? "text-aqua" : "text-teal-link",
         className,
       )}
     >
