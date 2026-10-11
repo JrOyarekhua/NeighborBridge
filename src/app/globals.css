@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* `dark:` classes only apply inside a `.dark` element. We never add one, so
+   shadcn's dark styles stay off even when the visitor's OS is in dark mode. */
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Design tokens: the ONLY place raw values live ───────────────────────────
+   From the NeighborBridge ATL Figma prototype. Each token becomes a Tailwind
+   utility AND a CSS variable: --color-food → bg-food, --shadow-button → shadow-button. */
+@theme {
+  /* Brand palette */
+  --color-brand: #285e70;
+  --color-brand-deep: #173f4d;
+  --color-mint: #b7e4d2;
+  --color-mint-pale: #e9f7f1;
+  --color-canvas: #f8faf9;
+  --color-surface: #ffffff;
+  --color-ink: #1f2933;
+  --color-ink-soft: #5f6b73;
+  --color-line: #dce6e2;
+  --color-line-strong: #cddbd6;
+  --color-urgent: #9f352d;
+  --color-focus: #f2b84b;
+  --color-footer: #102f39;
+  --color-blush: #f7d9ce;
+
+  /* Home hero */
+  --color-hero-from: #f1f8f5;
+  --color-hero-to: #e5f3ef;
+  --color-hero-glow: #d8ece5;
+  --color-step-number: #dce9e4;
+
+  /* Category & listing tags (offer matches food today, but can change on its own) */
+  --color-food: #dcf2e9;
+  --color-food-foreground: #235b47;
+  --color-housing: #e3eaf7;
+  --color-housing-foreground: #3b527d;
+  --color-need: #f7dedb;
+  --color-need-foreground: #7d2d27;
+  --color-offer: #dcf2e9;
+  --color-offer-foreground: #235b47;
+  --color-skill: #f8ebc8;
+  --color-skill-foreground: #604c20;
+
+  /* Notices */
+  --color-notice: #fff9ec;
+  --color-notice-border: #f0d9b1;
+  --color-notice-foreground: #694b18;
+
+  /* Effects */
+  --shadow-button: 0 8px 20px color-mix(in srgb, var(--color-brand) 20%, transparent);
+  --shadow-logo: 0 6px 18px color-mix(in srgb, var(--color-brand) 18%, transparent);
+  --shadow-art: 0 25px 60px color-mix(in srgb, var(--color-brand) 30%, transparent);
+  --shadow-bubble: 0 10px 28px color-mix(in srgb, var(--color-brand) 20%, transparent);
+  --shadow-float: 0 12px 34px color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --shadow-panel: 0 24px 70px color-mix(in srgb, var(--color-ink) 10%, transparent);
+  --shadow-card: 0 10px 30px color-mix(in srgb, var(--color-ink) 4%, transparent);
+  --shadow-card-hover: 0 12px 28px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  --shadow-raised: 0 12px 40px color-mix(in srgb, var(--color-ink) 7%, transparent);
+
+  /* Layout: width where the header switches between full nav and the menu button (`nav:`) */
+  --breakpoint-nav: 53.125rem;
+  /* Content widths: max-w-page (header, footer, page content), max-w-narrow (home sections) */
+  --container-page: 73.75rem;
+  --container-narrow: 67.5rem;
+}
+
+/* ─── Role tokens: what each color is FOR ─────────────────────────────────────
+   shadcn components only use these. References only, never raw values. */
+:root {
+  --background: var(--color-canvas);
+  --foreground: var(--color-ink);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-brand);
+  --primary-foreground: var(--color-surface);
+  --secondary: var(--color-mint-pale);
+  --secondary-foreground: var(--color-brand-deep);
+  --muted: var(--color-canvas);
+  --muted-foreground: var(--color-ink-soft);
+  --accent: var(--color-mint-pale);
+  --accent-foreground: var(--color-brand);
+  --destructive: var(--color-urgent);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-focus);
+  --radius: 0.75rem;
+}
+
+/* `inline` because these values are variables set at runtime
+   (by next/font, or by the :root block above). */
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-synthesis: none;
+    @apply font-sans;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100dvh;
+    /* clip, not hidden: hidden would break the sticky header. */
+    overflow-x: clip;
+    @apply bg-background text-foreground;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Fallback for plain elements; shadcn components draw their own focus ring in --ring. */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
