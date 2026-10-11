@@ -1,17 +1,20 @@
-import { ArrowRight, Clock, MapPin, Phone } from "lucide-react";
+import { Clock, ExternalLink as ExternalIcon, MapPin, Phone } from "lucide-react";
 
+import { ExternalLink } from "@/components/shared/external-link";
 import { Button } from "@/components/ui/button";
 import type { Resource } from "@/lib/data";
+import { directionsUrl } from "@/lib/resources";
 
 export function ProviderCard({ resource }: { resource: Resource }) {
+  const directions = directionsUrl(resource);
   const details = [
     { icon: MapPin, label: "Address or service area", value: `${resource.address}, ${resource.zip}` },
     { icon: Clock, label: "Operating hours", value: resource.hours },
-    { icon: Phone, label: "Phone", value: "Demo placeholder — no verified phone provided" },
+    { icon: Phone, label: "Phone", value: resource.phone ?? "No verified phone provided" },
   ];
 
   return (
-    <aside className="rounded-2xl border border-line bg-surface p-6 shadow-raised sm:p-7 nav:sticky nav:top-24">
+    <aside className="rounded-card border border-line bg-surface p-6 shadow-raised sm:p-7 nav:sticky nav:top-24">
       <h2 className="mb-4 text-xl font-bold text-brand-deep">Provider information</h2>
       <dl className="mb-6">
         {details.map(({ icon: Icon, label, value }) => (
@@ -25,24 +28,35 @@ export function ProviderCard({ resource }: { resource: Resource }) {
       </dl>
 
       <div className="flex flex-col gap-2.5">
-        {resource.website ? (
+        {resource.phone ? (
           <Button asChild>
-            <ExternalLink href={resource.website}>
-              Contact Provider <ArrowRight />
-            </ExternalLink>
+            <a href={`tel:${resource.phone.replace(/\D/g, "")}`}>
+              <Phone /> Call Organization
+            </a>
           </Button>
         ) : (
-          <Button disabled>Contact unavailable</Button>
+          <Button disabled>Phone unavailable</Button>
         )}
-        {resource.directions ? (
+        {directions ? (
           <Button asChild variant="outline">
-            <ExternalLink href={resource.directions}>
+            <ExternalLink href={directions}>
               Get Directions <MapPin />
             </ExternalLink>
           </Button>
         ) : (
           <Button disabled variant="outline">
             Directions unavailable
+          </Button>
+        )}
+        {resource.website ? (
+          <Button asChild variant="outline">
+            <ExternalLink href={resource.website}>
+              Visit Website <ExternalIcon />
+            </ExternalLink>
+          </Button>
+        ) : (
+          <Button disabled variant="outline">
+            Website unavailable
           </Button>
         )}
       </div>
@@ -53,15 +67,5 @@ export function ProviderCard({ resource }: { resource: Resource }) {
           : "This demo record does not include verified contact information."}
       </p>
     </aside>
-  );
-}
-
-/** Opens in a new tab safely, and tells screen-reader users it will. */
-function ExternalLink({ href, children, ...props }: React.ComponentProps<"a">) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
-      {children}
-      <span className="sr-only">(opens in a new tab)</span>
-    </a>
   );
 }

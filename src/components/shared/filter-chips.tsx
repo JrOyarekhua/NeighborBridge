@@ -2,7 +2,14 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-type Option<T extends string> = { value: T; label: string };
+type Option<T extends string> = { value: T; label: React.ReactNode };
+
+function chipClass(isActive: boolean) {
+  return cn(
+    "inline-flex min-h-12 items-center gap-2 rounded-full border px-4 text-sm font-bold transition-colors hover:border-brand hover:bg-brand hover:text-primary-foreground [&_svg]:size-4",
+    isActive ? "border-brand bg-brand text-primary-foreground" : "border-line bg-surface text-ink",
+  );
+}
 
 /**
  * One-tap filters. Each chip is a plain link to the filtered URL, so it works
@@ -30,18 +37,37 @@ export function FilterChips<T extends string>({
                 href={hrefFor(value)}
                 scroll={false}
                 aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "inline-flex min-h-10 items-center rounded-full border px-4 text-sm font-bold transition-colors hover:border-brand hover:bg-brand hover:text-primary-foreground",
-                  isActive
-                    ? "border-brand bg-brand text-primary-foreground"
-                    : "border-line bg-surface text-ink-soft",
-                )}
+                className={chipClass(isActive)}
               >
                 {optionLabel}
               </Link>
             </li>
           );
         })}
+      </ul>
+    </nav>
+  );
+}
+
+/** On/off filters ("Open now"). Each chip links to the URL with that filter flipped. */
+export function ToggleChips({
+  label,
+  options,
+}: {
+  label: string;
+  options: readonly { key: string; label: string; active: boolean; href: string }[];
+}) {
+  return (
+    <nav aria-label={label}>
+      <ul className="flex flex-wrap gap-2">
+        {options.map(({ key, label: optionLabel, active, href }) => (
+          <li key={key}>
+            <Link href={href} scroll={false} className={chipClass(active)}>
+              {optionLabel}
+              <span className="sr-only">{active ? " (on, select to turn off)" : " (off)"}</span>
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

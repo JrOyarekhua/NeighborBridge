@@ -18,8 +18,7 @@ export function Brand({ variant = "default" }: { variant?: "default" | "light" }
       </span>
       <span>
         NeighborBridge{" "}
-        {/* Mint on the dark footer: the prototype's brand teal was too low-contrast there. */}
-        <strong className={cn("font-extrabold", variant === "light" ? "text-mint" : "text-brand")}>
+        <strong className={cn("font-extrabold", variant === "light" ? "text-aqua" : "text-teal-link")}>
           ATL
         </strong>
       </span>
